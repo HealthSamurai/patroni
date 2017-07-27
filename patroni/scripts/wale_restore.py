@@ -84,6 +84,7 @@ class WALERestore(object):
                 return False
 
             backup_info = dict(zip(names, vals))
+            logger.error("backup_info: {}".format(backup_info))
         except subprocess.CalledProcessError as e:
             logger.error("could not query wal-e latest backup: {}".format(e))
             return False
