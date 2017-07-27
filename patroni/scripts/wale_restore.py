@@ -31,6 +31,7 @@ import psycopg2
 import subprocess
 import sys
 import argparse
+import traceback
 
 
 if sys.hexversion >= 0x0300000:
@@ -95,6 +96,7 @@ class WALERestore(object):
             backup_start_offset = backup_info['wal_segment_offset_backup_start']
         except Exception as e:
             logger.error("unable to get some of WALE backup parameters: {}".format(e))
+            logger.error(traceback.format_exc())
             return False
 
         # WAL filename is XXXXXXXXYYYYYYYY000000ZZ, where X - timeline, Y - LSN logical log file,
