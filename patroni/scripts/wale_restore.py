@@ -73,6 +73,7 @@ class WALERestore(object):
             # base_00000001000000000000007F_00000040  2015-05-18T10:13:25.000Z
             # 20310671    00000001000000000000007F    00000040
             # 00000001000000000000007F    00000240
+            logger.error("latest_backup: {}".format(latest_backup))
             backup_strings = latest_backup.splitlines() if latest_backup else ()
             if len(backup_strings) != 2:
                 return False
